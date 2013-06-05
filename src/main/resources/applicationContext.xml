@@ -1,0 +1,61 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/data/mongo
+       http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+    <mongo:db-factory id="mongoDbFactory" host="192.168.1.104" port="27017" dbname="spring"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+
+    <bean id="pricePlanDao" class="mk.arena.raiden.api.dao.PricePlanDaoImpl"/>
+
+    <bean id="pricePlanHandler" class="mk.arena.raiden.main.PricePlanHandlerImpl">
+        <property name="pricePlanDao" ref="pricePlanDao"/>
+        <property name="timePlugins">
+            <util:map map-class="java.util.HashMap">
+                <entry key="flat">
+                    <bean class="mk.arena.raiden.main.plugin.time.flat.FlatTimePlugin"/>
+                </entry>
+                <entry key="advanced">
+                    <bean class="mk.arena.raiden.main.plugin.time.advanced.AdvancedTimePlugin"/>
+                </entry>
+            </util:map>
+        </property>
+        <property name="ratingPlugins">
+            <util:map map-class="java.util.HashMap">
+                <entry key="voice-standard">
+                    <bean class="mk.arena.raiden.main.plugin.rating.voice.VoiceStandard"/>
+                </entry>
+                <entry key="initial">
+                    <bean class="mk.arena.raiden.main.plugin.rating.initial.Initial"/>
+                </entry>
+            </util:map>
+        </property>
+        <property name="locationPlugins">
+            <util:map map-class="java.util.HashMap">
+                <entry key="flatrate">
+                    <bean class="mk.arena.raiden.main.plugin.location.flatrate.FlatRate"/>
+                </entry>
+                <entry key="bestmatch">
+                    <bean class="mk.arena.raiden.main.plugin.location.bestmatch.BestMatch"/>
+                </entry>
+            </util:map>
+        </property>
+    </bean>
+
+
+    <context:component-scan base-package="mk.arena.raiden.rest"/>
+
+
+</beans>

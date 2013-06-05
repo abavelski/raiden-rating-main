@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4>Open price plan</h4>
+</div>
+<div class="modal-body">
+    <select ng-model="result" multiple="multiple" ng-options="p.name for p in pricePlans"></select>
+</div>
+<div class="modal-footer">
+    <button ng-click="open(result)" class="btn btn-primary" >Open</button>
+    <button ng-click="cancel()" class="btn btn-primary" >Cancel</button>
+</div>
