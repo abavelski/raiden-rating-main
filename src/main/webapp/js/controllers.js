@@ -36,6 +36,7 @@ function TestCtrl($scope, $http) {
 
 function PricePlanCtrl($scope, $http, $dialog) {
     $scope.disabled = "disabled";
+    $scope.alerts = [];
 
     $scope.codeOptions = {
         mode: {name: 'javascript', json: true},
@@ -50,8 +51,11 @@ function PricePlanCtrl($scope, $http, $dialog) {
 
     $scope.createPricePlan = function() {
         var data = JSON.parse($scope.json);
-        console.log(data);
-        $http.post('rest/priceplans', data);
+        $http.post('rest/priceplans', data).success(function() {
+            $scope.alerts.push({type: 'success', msg: "Price plan updated successfully."});
+        }).error(function() {
+                $scope.alerts.push({type: 'error', msg: "Price plan update error."});
+            });
     }
 
     $scope.openDialog = function(){
@@ -70,6 +74,10 @@ function PricePlanCtrl($scope, $http, $dialog) {
                 });
             }
         });
+    };
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
     };
 
 }

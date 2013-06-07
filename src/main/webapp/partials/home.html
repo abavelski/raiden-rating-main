@@ -2,7 +2,7 @@
 <div>
 
     <tabs>
-        <pane title="Setup">
+        <pane heading="Setup">
             <div ng-controller="PricePlanCtrl">
                 <div class="btn-toolbar">
                     <div class="btn-group">
@@ -18,10 +18,10 @@
                         <button ng-click="createPricePlan()" class="btn btn-primary {{disabled}}">Save</button>
                     </div>
                 </form>
-
+                <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
             </div>
         </pane>
-        <pane title="Test">
+        <pane heading="Test">
 
             <div class="row" ng-controller="TestCtrl">
                 <div class="span6">
