@@ -5,7 +5,7 @@
   <artifactId>raiden-rating</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spring-mongo Maven Webapp</name>
+  <name>Raiden Rating</name>
   <url>http://maven.apache.org</url>
 
 
@@ -40,6 +40,11 @@
                 <artifactId>spring-aop</artifactId>
                 <version>${org.springframework.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -48,6 +53,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
 
         <dependency>
@@ -90,6 +99,8 @@
           <artifactId>spring-data-mongodb</artifactId>
           <version>1.2.0.RELEASE</version>
       </dependency>
+
+        <!--Jersey -->
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
@@ -105,6 +116,13 @@
             <artifactId>jersey-servlet</artifactId>
             <version>1.15</version>
         </dependency>
+        <!--JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+
   </dependencies>
   <build>
     <finalName>raiden-raiting</finalName>
