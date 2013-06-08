@@ -24,30 +24,20 @@ function TestCtrl($scope, $http) {
         request.amount = parseInt($scope.amount);
         request.destination = $scope.destination;
         request.chargeDate = $scope.datetime;
-        console.log(request);
         $http.post('rest/rates', request).success(function(data) {
             $scope.locations = data.locations;
             $scope.charges = data.chargeLines;
-
         });
     }
-
 }
 
 function PricePlanCtrl($scope, $http, $dialog) {
     $scope.disabled = "disabled";
     $scope.alerts = [];
 
-    $scope.codeOptions = {
-        mode: {name: 'javascript', json: true},
-        theme:'eclipse',
-        styleActiveLine: true,
-        lineNumbers: true,
-        lineWrapping: true,
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        readOnly : false
-    };
+    $scope.foldJS = function(cm, where) {
+        cm.foldCode(where, CodeMirror.braceRangeFinder);
+    }
 
     $scope.createPricePlan = function() {
         var data = JSON.parse($scope.json);
@@ -56,7 +46,7 @@ function PricePlanCtrl($scope, $http, $dialog) {
         }).error(function() {
                 $scope.alerts.push({type: 'error', msg: "Price plan update error."});
             });
-    }
+    };
 
     $scope.openDialog = function(){
         var d = $dialog.dialog({
@@ -65,12 +55,9 @@ function PricePlanCtrl($scope, $http, $dialog) {
         });
         d.open().then(function(result){
             if(result) {
-                console.log(result);
                 $http.get('rest/priceplans/'+result[0].code).success(function(data){
                     $scope.json = JSON.stringify(data, null, 2);
-                    $scope.codeOptions.readOnly=false;
                     $scope.disabled = "";
-
                 });
             }
         });

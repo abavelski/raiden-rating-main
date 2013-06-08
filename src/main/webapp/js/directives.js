@@ -8,12 +8,11 @@ angular.module('myApp.directives', []).
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
-                console.log(scope, element, attrs);
                 element.datetimepicker({
                     format: 'dd/MM/yyyy hh:mm:ss'
                 });
                 element.on('changeDate', function(e) {
-                    scope.datetime=e.date;
+                    scope[attrs.datevalue]=e.date;
                     scope.$apply();
                 });
             }
