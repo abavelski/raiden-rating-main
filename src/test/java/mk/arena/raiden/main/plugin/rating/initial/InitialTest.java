@@ -18,24 +18,23 @@ import static junit.framework.TestCase.assertEquals;
 public class InitialTest {
 
     private RatingPlugin initial;
+    private RatingRequest request;
 
     @Before
     public void setup() {
         initial = new Initial();
+        request = new RatingRequest();
     }
-
 
     @Test
     public void testZeroAmount() {
-        RatingRequest request = new RatingRequest();
         request.setAmount(0);
-        assertEquals(initial.calculatePrice(request, BigDecimal.valueOf(0.29)), BigDecimal.ZERO);
+        assertEquals(BigDecimal.ZERO, initial.calculatePrice(request, BigDecimal.valueOf(0.29)));
     }
 
     @Test
     public void testNonZeroAmount() throws Exception {
-        RatingRequest request = new RatingRequest();
         request.setAmount(245);
-        assertEquals(initial.calculatePrice(request, BigDecimal.valueOf(0.29)), BigDecimal.valueOf(0.29));
+        assertEquals(BigDecimal.valueOf(0.29), initial.calculatePrice(request, BigDecimal.valueOf(0.29)));
     }
 }

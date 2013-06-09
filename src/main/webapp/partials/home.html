@@ -1,102 +1,12 @@
 
 <div>
-
     <tabs>
         <pane heading="Setup">
-            <div ng-controller="PricePlanCtrl">
-                <div class="btn-toolbar">
-                    <div class="btn-group">
-                        <button class="btn" ng-click="openDialog()"><i class="icon-folder-open"></i></button>
-                    </div>
-                </div>
-                <form >
-                    <div class="control-group">
-                        <label class="control-label" for="code">Price plan specification:</label>
-                        <textarea id="code" ui-codemirror="{mode: {name: 'javascript', json: true},
-                                                            theme:'eclipse',
-                                                            styleActiveLine: true,
-                                                            lineNumbers: true,
-                                                            lineWrapping: true,
-                                                            matchBrackets: true,
-                                                            autoCloseBrackets: true,
-                                                            onGutterClick: foldJS}" ng-model="json"></textarea>
-                    </div>
-                    <div class="control-group">
-                        <button ng-click="createPricePlan()" class="btn btn-primary {{disabled}}">Save</button>
-                    </div>
-                </form>
-                <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-            </div>
+            <div ng-include src="'partials/pricePlanSetup.html'"></div>
         </pane>
         <pane heading="Test">
-
-            <div class="row" ng-controller="TestCtrl">
-                <div class="span6">
-                    <h4>Request</h4>
-            <form class="form-horizontal">
-                <div class="control-group">
-                    <label class="control-label" for="pricePlanCode">Price Plan Code</label>
-                    <div class="controls">
-                        <input type="text" ng-model="pricePlanCode" id="pricePlanCode" placeholder="Price Plan Code">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="ratingCode">Rating Code</label>
-                    <div class="controls">
-                        <input type="text" ng-model="ratingCode" id="ratingCode" placeholder="Rating Code">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="amount">Amount</label>
-                    <div class="controls">
-                        <input type="text" ng-model="amount" id="amount" placeholder="Amount">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="destination">BNumber</label>
-                    <div class="controls">
-                        <input type="text" ng-model="destination" id="destination" placeholder="Destination">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="datetimepicker">Charge date</label>
-                    <div class="controls">
-                    <div class="input-append date" datevalue="datetime" datetimepicker>
-                        <input type="text" id="datetimepicker">
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" ng-click="rate()" class="btn btn-primary pull-left">Submit</button>
-                    </div>
-                </div>
-            </form>
-
-                </div>
-                <div class="span6">
-                    <h4>Response</h4>
-                    <p>Locations: </p>
-                    <ul>
-                        <li ng-repeat="location in locations">{{location}}</li>
-                    </ul>
-                    <p>Charge lines:</p>
-                    <ul>
-                        <li ng-repeat="charge in charges">{{charge.ratingPlugin}} --> {{charge.price}}</li>
-                    </ul>
-                </div>
-            </div>
+            <div ng-include src="'partials/testPricePlan.html'" class="row"></div>
         </pane>
     </tabs>
-
-
 </div>
 
