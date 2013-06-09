@@ -42,4 +42,20 @@ public class TimePlan {
     public void setEndHour(Integer endHour) {
         this.endHour = endHour;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TimePlan timePlan = (TimePlan) o;
+
+        if (charges != null ? !charges.equals(timePlan.charges) : timePlan.charges != null) return false;
+        if (!code.equals(timePlan.code)) return false;
+        if (endHour != null ? !endHour.equals(timePlan.endHour) : timePlan.endHour != null) return false;
+        if (startHour != null ? !startHour.equals(timePlan.startHour) : timePlan.startHour != null) return false;
+
+        return true;
+    }
+
 }
