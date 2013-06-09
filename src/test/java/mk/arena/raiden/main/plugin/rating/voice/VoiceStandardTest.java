@@ -25,7 +25,7 @@ public class VoiceStandardTest {
     }
 
     @Test
-    public void testZeroAmount() throws Exception {
+    public void testZeroSeconds() throws Exception {
         request.setAmount(0);
         assertEquals(BigDecimal.ZERO, voice.calculatePrice(request, BigDecimal.valueOf(0.29)));
     }
@@ -35,4 +35,11 @@ public class VoiceStandardTest {
         request.setAmount(2);
         assertEquals(BigDecimal.valueOf(0.29), voice.calculatePrice(request, BigDecimal.valueOf(0.29)));
     }
+
+    @Test
+    public void testFullMinute() throws Exception {
+        request.setAmount(60);
+        assertEquals(BigDecimal.valueOf(0.29), voice.calculatePrice(request, BigDecimal.valueOf(0.29)));
+    }
+
 }

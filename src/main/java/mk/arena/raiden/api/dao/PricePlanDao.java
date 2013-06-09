@@ -5,7 +5,7 @@ import mk.arena.raiden.api.bean.PricePlan;
 import java.util.List;
 
 /**
- * User: alb@neoconsult.com
+ * User: aba
  * Date: 02/06/13
  */
 public interface PricePlanDao {
