@@ -9,7 +9,16 @@ public class TimePlan {
     private String code;
     private Integer startHour;
     private Integer endHour;
+    private List<String> campaignCodes;
     private List<Charge> charges;
+
+    public List<String> getCampaignCodes() {
+        return campaignCodes;
+    }
+
+    public void setCampaignCodes(List<String> campaignCodes) {
+        this.campaignCodes = campaignCodes;
+    }
 
     public List<Charge> getCharges() {
         return charges;

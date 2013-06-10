@@ -25,6 +25,10 @@ public class AdvancedTimePlugin implements TimePlugin {
 
     @Override
     public List<Charge> getCharges(TimePlanRequest request) {
+        return getSelectedPlan(request).getCharges();
+    }
+
+    private TimePlan getSelectedPlan(TimePlanRequest request) {
         initTimePlansMap(request.getTimePlans());
         List<TimePlan> timePlans=null;
         if (isHoliday(request.getChargeDate()) ) {
@@ -48,11 +52,15 @@ public class AdvancedTimePlugin implements TimePlugin {
                 break;
             }
         }
-
         if (selectedPlan==null) {
             throw new RuntimeException("Time plan not found");
         }
-        return selectedPlan.getCharges();
+        return selectedPlan;
+    }
+
+    @Override
+    public List<String> getCampaignCodes(TimePlanRequest request) {
+        return getSelectedPlan(request).getCampaignCodes();
     }
 
     private void initTimePlansMap(List<TimePlan> timePlans) {
