@@ -72,7 +72,7 @@ public class PricePlanHandlerImpl implements PricePlanHandler {
             chargeLines.add(line);
         }
         RatingResponse response = new RatingResponse();
-        response.setCampaignCodes(timePlugin.getCampaignCodes(timeRequest));
+        response.setBundleCodes(timePlugin.getBundleCodes(timeRequest));
         response.setChargeLines(chargeLines);
         response.setLocations(locationResponse.getLocationStrings());
         return response;

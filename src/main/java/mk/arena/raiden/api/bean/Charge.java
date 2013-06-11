@@ -36,4 +36,10 @@ public class Charge {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = rate != null ? rate.hashCode() : 0;
+        result = 31 * result + (ratingPlugin != null ? ratingPlugin.hashCode() : 0);
+        return result;
+    }
 }

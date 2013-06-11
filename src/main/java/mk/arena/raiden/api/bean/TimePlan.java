@@ -9,15 +9,15 @@ public class TimePlan {
     private String code;
     private Integer startHour;
     private Integer endHour;
-    private List<String> campaignCodes;
+    private List<String> bundleCodes;
     private List<Charge> charges;
 
-    public List<String> getCampaignCodes() {
-        return campaignCodes;
+    public List<String> getBundleCodes() {
+        return bundleCodes;
     }
 
-    public void setCampaignCodes(List<String> campaignCodes) {
-        this.campaignCodes = campaignCodes;
+    public void setBundleCodes(List<String> bundleCodes) {
+        this.bundleCodes = bundleCodes;
     }
 
     public List<Charge> getCharges() {
@@ -59,12 +59,23 @@ public class TimePlan {
 
         TimePlan timePlan = (TimePlan) o;
 
+        if (bundleCodes != null ? !bundleCodes.equals(timePlan.bundleCodes) : timePlan.bundleCodes != null)
+            return false;
         if (charges != null ? !charges.equals(timePlan.charges) : timePlan.charges != null) return false;
-        if (!code.equals(timePlan.code)) return false;
+        if (code != null ? !code.equals(timePlan.code) : timePlan.code != null) return false;
         if (endHour != null ? !endHour.equals(timePlan.endHour) : timePlan.endHour != null) return false;
         if (startHour != null ? !startHour.equals(timePlan.startHour) : timePlan.startHour != null) return false;
 
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = code != null ? code.hashCode() : 0;
+        result = 31 * result + (startHour != null ? startHour.hashCode() : 0);
+        result = 31 * result + (endHour != null ? endHour.hashCode() : 0);
+        result = 31 * result + (bundleCodes != null ? bundleCodes.hashCode() : 0);
+        result = 31 * result + (charges != null ? charges.hashCode() : 0);
+        return result;
+    }
 }

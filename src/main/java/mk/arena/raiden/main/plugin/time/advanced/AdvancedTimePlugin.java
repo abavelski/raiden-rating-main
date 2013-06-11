@@ -59,8 +59,8 @@ public class AdvancedTimePlugin implements TimePlugin {
     }
 
     @Override
-    public List<String> getCampaignCodes(TimePlanRequest request) {
-        return getSelectedPlan(request).getCampaignCodes();
+    public List<String> getBundleCodes(TimePlanRequest request) {
+        return getSelectedPlan(request).getBundleCodes();
     }
 
     private void initTimePlansMap(List<TimePlan> timePlans) {

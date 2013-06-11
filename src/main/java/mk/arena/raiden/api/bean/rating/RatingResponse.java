@@ -10,15 +10,15 @@ import java.util.List;
  */
 public class RatingResponse {
     private List<ChargeLine> chargeLines;
-    private List<String> campaignCodes;
+    private List<String> bundleCodes;
     private List<String> locations;
 
-    public List<String> getCampaignCodes() {
-        return campaignCodes;
+    public List<String> getBundleCodes() {
+        return bundleCodes;
     }
 
-    public void setCampaignCodes(List<String> campaignCodes) {
-        this.campaignCodes = campaignCodes;
+    public void setBundleCodes(List<String> bundleCodes) {
+        this.bundleCodes = bundleCodes;
     }
 
     public List<String> getLocations() {
