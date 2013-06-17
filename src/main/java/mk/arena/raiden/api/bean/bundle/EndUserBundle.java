@@ -11,6 +11,15 @@ public class EndUserBundle {
     private String id;
     private long counter;
     private Date expirationDate;
+    private String bundleUserId;
+
+    public String getBundleUserId() {
+        return bundleUserId;
+    }
+
+    public void setBundleUserId(String bundleUserId) {
+        this.bundleUserId = bundleUserId;
+    }
 
     public String getId() {
         return id;
