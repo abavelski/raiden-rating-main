@@ -1,5 +1,6 @@
 package mk.arena.raiden.api.bean.bundle;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,6 +11,15 @@ public class BundleRequest {
     long amount;
     long userId;
     List<String> bundleCodes;
+    Date chargeDate;
+
+    public Date getChargeDate() {
+        return chargeDate;
+    }
+
+    public void setChargeDate(Date chargeDate) {
+        this.chargeDate = chargeDate;
+    }
 
     public long getAmount() {
         return amount;

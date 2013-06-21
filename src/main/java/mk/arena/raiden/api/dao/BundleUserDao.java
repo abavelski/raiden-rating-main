@@ -2,6 +2,7 @@ package mk.arena.raiden.api.dao;
 
 import mk.arena.raiden.api.bean.bundle.UserBundle;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface BundleUserDao {
 
-     public List<UserBundle> getBundles(long endUserId);
+     public List<UserBundle> getBundles(long endUserId, Date chargeDate);
 }

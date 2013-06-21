@@ -12,7 +12,7 @@ import mk.arena.raiden.api.bean.bundle.UserBundle;
 public interface BundlePlugin {
 
     public UserBundle createBundleForUser(Bundle bundle, String userId);
-    public BundleResponse rate(BundleRequest request);
+    public BundleResponse rate(UserBundle bundle, long amount);
     public void reset(UserBundle bundle);
     public void terminate(UserBundle bundle);
 
