@@ -11,7 +11,16 @@ public class PricePlan {
     @Id
     private String code;
     private String name;
-    List<TrafficPlan> trafficPlans;
+    private List<TrafficPlan> trafficPlans;
+    private ChargeGroup rootChargeGroup;
+
+    public ChargeGroup getRootChargeGroup() {
+        return rootChargeGroup;
+    }
+
+    public void setRootChargeGroup(ChargeGroup rootChargeGroup) {
+        this.rootChargeGroup = rootChargeGroup;
+    }
 
     public String getCode() {
         return code;
@@ -36,4 +45,7 @@ public class PricePlan {
     public void setTrafficPlans(List<TrafficPlan> trafficPlans) {
         this.trafficPlans = trafficPlans;
     }
+
+
+
 }
