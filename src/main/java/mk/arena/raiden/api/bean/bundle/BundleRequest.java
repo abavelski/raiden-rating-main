@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class BundleRequest {
     long amount;
-    long endUserId;
+    long userId;
     List<String> bundleCodes;
 
     public long getAmount() {
@@ -19,12 +19,12 @@ public class BundleRequest {
         this.amount = amount;
     }
 
-    public long getEndUserId() {
-        return endUserId;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setEndUserId(long endUserId) {
-        this.endUserId = endUserId;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public List<String> getBundleCodes() {

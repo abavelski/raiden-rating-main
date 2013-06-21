@@ -7,26 +7,36 @@ import java.util.Date;
  * Date: 6/11/13
  */
 
-public class EndUserBundle {
-    private String id;
+public class UserBundle {
+
+    private long id;
+    private long userId;
+    private String bundleCode;
     private long counter;
     private Date expirationDate;
-    private String bundleUserId;
 
-    public String getBundleUserId() {
-        return bundleUserId;
-    }
-
-    public void setBundleUserId(String bundleUserId) {
-        this.bundleUserId = bundleUserId;
-    }
-
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getBundleCode() {
+        return bundleCode;
+    }
+
+    public void setBundleCode(String bundleCode) {
+        this.bundleCode = bundleCode;
     }
 
     public long getCounter() {

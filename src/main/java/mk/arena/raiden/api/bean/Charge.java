@@ -5,6 +5,15 @@ import java.math.BigDecimal;
 public class Charge {
     private BigDecimal rate;
     private String ratingPlugin;
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public BigDecimal getRate() {
         return rate;
@@ -29,6 +38,7 @@ public class Charge {
 
         Charge charge = (Charge) o;
 
+        if (code != null ? !code.equals(charge.code) : charge.code != null) return false;
         if (rate != null ? !rate.equals(charge.rate) : charge.rate != null) return false;
         if (ratingPlugin != null ? !ratingPlugin.equals(charge.ratingPlugin) : charge.ratingPlugin != null)
             return false;
@@ -40,6 +50,7 @@ public class Charge {
     public int hashCode() {
         int result = rate != null ? rate.hashCode() : 0;
         result = 31 * result + (ratingPlugin != null ? ratingPlugin.hashCode() : 0);
+        result = 31 * result + (code != null ? code.hashCode() : 0);
         return result;
     }
 }

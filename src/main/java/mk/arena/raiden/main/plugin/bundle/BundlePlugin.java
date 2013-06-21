@@ -3,7 +3,7 @@ package mk.arena.raiden.main.plugin.bundle;
 import mk.arena.raiden.api.bean.bundle.Bundle;
 import mk.arena.raiden.api.bean.bundle.BundleRequest;
 import mk.arena.raiden.api.bean.bundle.BundleResponse;
-import mk.arena.raiden.api.bean.bundle.EndUserBundle;
+import mk.arena.raiden.api.bean.bundle.UserBundle;
 
 /**
  * User: aba
@@ -11,10 +11,10 @@ import mk.arena.raiden.api.bean.bundle.EndUserBundle;
  */
 public interface BundlePlugin {
 
-    public EndUserBundle createBundleForUser(Bundle bundle, String userId);
+    public UserBundle createBundleForUser(Bundle bundle, String userId);
     public BundleResponse rate(BundleRequest request);
-    public void reset(EndUserBundle bundle);
-    public void terminate(EndUserBundle bundle);
+    public void reset(UserBundle bundle);
+    public void terminate(UserBundle bundle);
 
 
 }
